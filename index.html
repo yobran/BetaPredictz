@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Beta Predictz | Transparent Betting Insights</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="logo">Beta<span>Predictz</span></a>
+                <div class="nav-links">
+                    <a href="#results">Results</a>
+                    <a href="#vip">VIP</a>
+                    <a href="#testimonials">Reviews</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="badge">
+                <span class="badge-dot"></span>
+                <span class="badge-text">Real results. Tracked daily. No hype.</span>
+            </div>
+            <div class="win-streak-counter" id="winStreakCounter">
+                <span class="streak-fire">🔥</span>
+                <span class="streak-text">
+                    <span class="streak-highlight" id="streakDays">14</span> DAY WIN STREAK
+                    <span class="streak-divider">•</span>
+                    <span class="streak-stats"><span id="streakWins">80</span>/<span id="streakTotal">80</span> WINS</span>
+                </span>
+            </div>
+            <h1>Stop Losing Money<br>Chasing Big Odds</h1>
+            <p>Data-driven, low-risk betting approach focused on consistency. Small odds, real profits.</p>
+            <a href="#results" class="btn btn-primary">View Results →</a>
+            
+            <div class="stats-grid" style="margin-top: 60px;">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalBets">0</div>
+                    <div class="stat-label">Total Bets</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value text-win" id="totalWins">0</div>
+                    <div class="stat-label">Wins</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value text-loss" id="totalLosses">0</div>
+                    <div class="stat-label">Losses</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="winRate">0%</div>
+                    <div class="stat-label">Win Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Active Members Section -->
+    <section id="members-section" style="background: #0a0a0a; padding: 40px 0; border-bottom: 1px solid #222;">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                <h2 style="font-size: 24px; color: #fff;">👥 Active VIP Members</h2>
+                <button class="member-toggle-btn" id="showMembersBtn" style="background: #10b981; color: #0a0a0a; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer;">Show All Members (200+)</button>
+            </div>
+            <p style="color: #a1a1aa; margin-bottom: 24px; font-size: 14px;">Join 200+ active members getting daily winning picks</p>
+            <div class="members-preview" id="membersPreview" style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-bottom: 16px;"></div>
+            <div id="hiddenMembers" style="display: none;"><div class="members-grid" id="membersGrid" style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px;"></div></div>
+        </div>
+    </section>
+
+    <!-- Today's Locked Games -->
+    <section id="today-games">
+        <div class="container">
+            <h2 class="section-title">🔒 Today's Picks (VIP Only)</h2>
+            <p class="text-center" style="color: #a1a1aa; margin-bottom: 32px;">These are locked for VIP members only. See past results below.</p>
+            
+            <div class="locked-container">
+                <div class="lock-overlay">
+                    <div class="lock-icon">🔐</div>
+                    <p>VIP Content - Unlock to See Today's Picks</p>
+                </div>
+                <div class="today-games-preview">
+                    <div class="game-item-locked">
+                        <span class="blur-text">Manchester City vs Brighton</span>
+                        <span class="blur-text" style="color: #10b981;">Over 2.5 Goals</span>
+                        <span class="blur-text">@ 1.85</span>
+                    </div>
+                    <div class="game-item-locked">
+                        <span class="blur-text">Liverpool vs Bournemouth</span>
+                        <span class="blur-text" style="color: #10b981;">Liverpool Win</span>
+                        <span class="blur-text">@ 1.72</span>
+                    </div>
+                    <div class="game-item-locked">
+                        <span class="blur-text">Arsenal vs West Ham</span>
+                        <span class="blur-text" style="color: #10b981;">BTTS Yes</span>
+                        <span class="blur-text">@ 1.68</span>
+                    </div>
+                    <div class="game-item-locked">
+                        <span class="blur-text">Real Madrid vs Valencia</span>
+                        <span class="blur-text" style="color: #10b981;">Real Madrid -1.5</span>
+                        <span class="blur-text">@ 1.75</span>
+                    </div>
+                    <div class="game-item-locked">
+                        <span class="blur-text">Bayern vs Dortmund</span>
+                        <span class="blur-text" style="color: #10b981;">Bayern Win</span>
+                        <span class="blur-text">@ 1.65</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results">
+        <div class="container">
+            <div class="results-header">
+                <h2 class="section-title">📊 Past Results</h2>
+                <div id="dateFilterContainer" class="date-filter-container"></div>
+            </div>
+            <p class="text-center" style="color: #a1a1aa; margin-bottom: 16px;">
+                <span id="resultsCount"></span> • 100% Win Rate
+            </p>
+            
+            <div class="table-wrapper">
+                <table id="resultsTable">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Match</th>
+                            <th>League</th>
+                            <th>Pick</th>
+                            <th>Odds</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsBody">
+                        <!-- Populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comments Section -->
+    <section id="comments-section">
+        <div class="container">
+            <h2 class="section-title">What Members Are Saying</h2>
+            <p class="text-center" style="color: #a1a1aa; margin-bottom: 32px;">Leave a comment and join the community</p>
+            
+            <div class="comment-box-container">
+                <div class="comment-box">
+                    <h4>Share Your Experience</h4>
+                    <form id="commentForm">
+                        <input type="text" id="commentName" placeholder="Your name (or nickname)" required>
+                        <textarea id="commentText" placeholder="Share what you think about Beta Predictz..." required></textarea>
+                        <button type="submit" class="btn btn-primary">Post Comment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Community Reviews</h2>
+            <div class="testimonials-grid" id="testimonialsContainer">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- VIP Section -->
+    <section id="vip" style="background: #0a0a0a;">
+        <div class="container">
+            <h2 class="section-title">🔒 VIP Membership</h2>
+            <div class="cta-box" style="max-width: 600px;">
+                <div class="lock-icon">🔐</div>
+                <h3 style="margin: 20px 0; color: #fff;">Daily Picks + Full History</h3>
+                <div class="price">20,000 <span>TZS</span></div>
+                <p style="color: #a1a1aa; margin-bottom: 24px;">Monthly membership • Cancel anytime</p>
+                
+                <div class="vip-features">
+                    <div class="feature">✓ 5-8 Daily VIP Picks</div>
+                    <div class="feature">✓ Full results history access</div>
+                    <div class="feature">✓ WhatsApp support</div>
+                    <div class="feature">✓ 30-day money back</div>
+                </div>
+
+                <a href="#" class="btn btn-whatsapp btn-block" id="whatsappBtn">📱 Join VIP - 20,000 TZS</a>
+                <p style="margin-top: 12px; font-size: 12px; color: #666;">30-day money back guarantee</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Beta Predictz. All rights reserved.</p>
+            <p style="margin-top: 8px; font-size: 11px;">Betting involves risk. Please bet responsibly.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
