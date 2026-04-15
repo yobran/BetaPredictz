@@ -65,7 +65,7 @@
     <!-- Active Members Section -->
     <section id="members-section" style="background: #0a0a0a; padding: 40px 0; border-bottom: 1px solid #222;">
         <div class="container">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
                 <h2 style="font-size: 24px; color: #fff;">👥 Active VIP Members</h2>
                 <button class="member-toggle-btn" id="showMembersBtn" style="background: #10b981; color: #0a0a0a; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer;">Show All Members (200+)</button>
             </div>
@@ -148,21 +148,25 @@
         </div>
     </section>
 
-    <!-- Comments Section -->
-    <section id="comments-section">
+    <!-- Comments Section - REDESIGNED -->
+    <section id="comments-section" style="background: #0a0a0a;">
         <div class="container">
-            <h2 class="section-title">What Members Are Saying</h2>
-            <p class="text-center" style="color: #a1a1aa; margin-bottom: 32px;">Leave a comment and join the community</p>
+            <h2 class="section-title">💬 Leave a Comment</h2>
+            <p class="text-center" style="color: #a1a1aa; margin-bottom: 24px; font-size: 14px;">Share your experience with Beta Predictz</p>
             
-            <div class="comment-box-container">
-                <div class="comment-box">
-                    <h4>Share Your Experience</h4>
-                    <form id="commentForm">
-                        <input type="text" id="commentName" placeholder="Your name (or nickname)" required>
-                        <textarea id="commentText" placeholder="Share what you think about Beta Predictz..." required></textarea>
-                        <button type="submit" class="btn btn-primary">Post Comment</button>
-                    </form>
-                </div>
+            <div class="comment-form-wrapper">
+                <form id="commentForm" class="comment-form">
+                    <div class="form-group">
+                        <input type="text" id="commentName" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="commentText" placeholder="Write your comment here..." rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <span>📝</span> Post Comment
+                    </button>
+                </form>
+                <p class="form-note">Your comment will appear in the community reviews</p>
             </div>
         </div>
     </section>
@@ -170,7 +174,7 @@
     <!-- Testimonials -->
     <section id="testimonials">
         <div class="container">
-            <h2 class="section-title">Community Reviews</h2>
+            <h2 class="section-title">⭐ Community Reviews</h2>
             <div class="testimonials-grid" id="testimonialsContainer">
                 <!-- Populated by JavaScript -->
             </div>
