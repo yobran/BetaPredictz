@@ -413,7 +413,7 @@ function setupWhatsApp() {
     if (btn) {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
-            window.open('https://wa.me/255700000000?text=' + encodeURIComponent('Habari, nahitaji kujiunga na Beta Predictz VIP. Naomba maelekezo ya malipo.'), '_blank');
+            window.open('https://wa.me/254729222696?text=' + encodeURIComponent('Habari, nahitaji kujiunga na Beta Predictz VIP. Naomba maelekezo ya malipo.'), '_blank');
         });
     }
 }
