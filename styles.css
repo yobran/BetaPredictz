@@ -720,3 +720,241 @@ td {
         margin-bottom: 20px;
     }
 }
+
+/* ============================================ */
+/* BEAUTIFUL MOBILE TABLE - EYE CATCHING        */
+/* ============================================ */
+
+@media (max-width: 768px) {
+    /* Remove old table styles */
+    .table-wrapper {
+        background: transparent !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow-x: visible !important;
+    }
+    
+    table {
+        display: block;
+        min-width: 100% !important;
+        border-collapse: separate;
+        border-spacing: 0 12px;
+    }
+    
+    thead {
+        display: none;
+    }
+    
+    tbody {
+        display: block;
+    }
+    
+    /* Beautiful card design */
+    tr {
+        display: block;
+        background: linear-gradient(145deg, #111114, #0e0e11);
+        border: 1px solid #222;
+        border-radius: 20px;
+        margin-bottom: 16px;
+        padding: 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    tr:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(16, 185, 129, 0.1);
+        border-color: #10b98140;
+    }
+    
+    /* Date header - PROMINENT */
+    td:first-child {
+        display: block !important;
+        background: linear-gradient(135deg, #10b98115, #0a0a0a) !important;
+        padding: 16px 18px !important;
+        margin: 0 !important;
+        border-bottom: 1px solid #10b98130 !important;
+        border-radius: 0 !important;
+        text-align: left !important;
+        font-weight: 700 !important;
+        font-size: 16px !important;
+        color: #10b981 !important;
+        letter-spacing: 0.3px;
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+    }
+    
+    td:first-child::before {
+        content: "📅" !important;
+        display: inline-block !important;
+        font-size: 16px !important;
+        margin-right: 6px !important;
+    }
+    
+    td:first-child::after {
+        content: "" !important;
+        margin-left: auto !important;
+        font-size: 12px !important;
+        color: #a1a1aa !important;
+        font-weight: 400 !important;
+    }
+    
+    /* Regular cells - clean layout */
+    td {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 14px 18px !important;
+        border-bottom: 1px solid #1a1a1e !important;
+        white-space: normal !important;
+        font-size: 14px !important;
+        background: transparent !important;
+        margin: 0 !important;
+    }
+    
+    td:last-child {
+        border-bottom: none !important;
+        padding-bottom: 16px !important;
+    }
+    
+    /* Hide empty date cells */
+    td[style*="display: none"] {
+        display: none !important;
+    }
+    
+    /* Beautiful labels */
+    td::before {
+        content: attr(data-label) !important;
+        font-weight: 600 !important;
+        color: #a1a1aa !important;
+        font-size: 13px !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+        background: #1a1a1e !important;
+        padding: 4px 10px !important;
+        border-radius: 20px !important;
+    }
+    
+    /* Match name - larger and bold */
+    td[data-label="Match"] {
+        font-weight: 600 !important;
+        font-size: 15px !important;
+        color: #ffffff !important;
+    }
+    
+    td[data-label="Match"]::before {
+        background: #10b98120 !important;
+        color: #10b981 !important;
+    }
+    
+    /* League - subtle */
+    td[data-label="League"] {
+        color: #a1a1aa !important;
+        font-size: 13px !important;
+    }
+    
+    /* Pick - highlighted */
+    td[data-label="Pick"] {
+        color: #ffffff !important;
+        font-weight: 500 !important;
+    }
+    
+    td[data-label="Pick"]::before {
+        background: #10b98120 !important;
+        color: #10b981 !important;
+    }
+    
+    /* Odds - badge style */
+    td[data-label="Odds"] {
+        font-weight: 700 !important;
+        color: #10b981 !important;
+        font-size: 15px !important;
+    }
+    
+    td[data-label="Odds"]::before {
+        background: #10b98120 !important;
+        color: #10b981 !important;
+    }
+    
+    /* Result - prominent */
+    td[data-label="Result"] {
+        font-weight: 600 !important;
+    }
+    
+    td[data-label="Result"] span {
+        font-size: 15px !important;
+        padding: 6px 14px !important;
+        background: #10b98120 !important;
+        border-radius: 30px !important;
+        display: inline-block !important;
+    }
+    
+    td[data-label="Result"] .text-loss {
+        background: #ef444420 !important;
+    }
+    
+    /* Remove old row borders */
+    .table-wrapper table,
+    .table-wrapper tbody,
+    .table-wrapper tr,
+    .table-wrapper td {
+        border: none !important;
+    }
+    
+    /* Results count text */
+    #resultsCount {
+        background: #10b98120;
+        padding: 6px 16px;
+        border-radius: 30px;
+        color: #10b981;
+        font-weight: 600;
+        font-size: 13px;
+    }
+}
+
+/* Additional polish for desktop too */
+@media (min-width: 769px) {
+    .table-wrapper {
+        border-radius: 20px;
+        overflow: hidden;
+    }
+    
+    table {
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+    
+    th {
+        background: #0a0a0a;
+        padding: 16px 20px;
+        font-weight: 600;
+        color: #10b981;
+        letter-spacing: 0.5px;
+    }
+    
+    td {
+        padding: 16px 20px;
+    }
+    
+    tbody tr:hover {
+        background: #111114;
+        transition: background 0.2s;
+    }
+    
+    .text-win {
+        background: #10b98120;
+        padding: 4px 12px;
+        border-radius: 30px;
+        font-weight: 600;
+    }
+    
+    .text-loss {
+        background: #ef444420;
+        padding: 4px 12px;
+        border-radius: 30px;
+        font-weight: 600;
+    }
+}
