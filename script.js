@@ -454,3 +454,74 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     console.log('✅ Beta Predictz Ready!');
 });
+
+// ============================================
+// UPDATE POPULATE RESULTS FOR MOBILE
+// ============================================
+function populateResultsMobile() {
+    const tbody = document.getElementById('resultsBody');
+    if (!tbody) return;
+    
+    const filteredData = currentFilterDate === 'all' 
+        ? resultsData 
+        : resultsData.filter(r => r.date === currentFilterDate);
+    
+    tbody.innerHTML = '';
+    const grouped = {};
+    filteredData.forEach(item => {
+        if (!grouped[item.date]) grouped[item.date] = [];
+        grouped[item.date].push(item);
+    });
+    
+    Object.keys(grouped).sort((a, b) => {
+        return new Date(b + ', 2026') - new Date(a + ', 2026');
+    }).forEach(date => {
+        const games = grouped[date];
+        games.forEach((item, index) => {
+            const row = document.createElement('tr');
+            const resultClass = item.result === 'win' ? 'text-win' : 'text-loss';
+            const resultText = item.result === 'win' ? '✅ Won' : '❌ Lost';
+            
+            // Add data-label attributes for mobile
+            if (index === 0) {
+                row.innerHTML = `
+                    <td rowspan="${games.length}" style="background: #0a0a0a; font-weight: 600; vertical-align: middle;" data-label="Date">${item.date}</td>
+                    <td data-label="Match">${item.match}</td>
+                    <td data-label="League">${item.league}</td>
+                    <td data-label="Pick">${item.pick}</td>
+                    <td data-label="Odds">@ ${item.odds.toFixed(2)}</td>
+                    <td data-label="Result"><span class="${resultClass}">${resultText}</span></td>
+                `;
+            } else {
+                row.innerHTML = `
+                    <td data-label="Date" style="display: none;"></td>
+                    <td data-label="Match">${item.match}</td>
+                    <td data-label="League">${item.league}</td>
+                    <td data-label="Pick">${item.pick}</td>
+                    <td data-label="Odds">@ ${item.odds.toFixed(2)}</td>
+                    <td data-label="Result"><span class="${resultClass}">${resultText}</span></td>
+                `;
+            }
+            tbody.appendChild(row);
+        });
+    });
+    
+    // Update stats
+    const totalGames = filteredData.length;
+    const wins = filteredData.filter(r => r.result === 'win').length;
+    const losses = totalGames - wins;
+    const winRate = totalGames > 0 ? ((wins / totalGames) * 100).toFixed(1) : 0;
+    
+    document.getElementById('totalBets').textContent = totalGames;
+    document.getElementById('totalWins').textContent = wins;
+    document.getElementById('totalLosses').textContent = losses;
+    document.getElementById('winRate').textContent = winRate + '%';
+    
+    const resultsCount = document.getElementById('resultsCount');
+    if (resultsCount) {
+        resultsCount.textContent = `Showing ${totalGames} picks`;
+    }
+}
+
+// Override the original populateResults
+populateResults = populateResultsMobile;

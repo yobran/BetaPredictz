@@ -632,3 +632,91 @@ td {
         font-size: 16px;
     }
 }
+
+/* ============================================ */
+/* MOBILE TABLE - NO HORIZONTAL SCROLL          */
+/* ============================================ */
+
+@media (max-width: 768px) {
+    /* Remove min-width that forces scroll */
+    table {
+        min-width: 100% !important;
+        display: block;
+    }
+    
+    thead {
+        display: none; /* Hide headers on mobile */
+    }
+    
+    tbody {
+        display: block;
+        width: 100%;
+    }
+    
+    tr {
+        display: block;
+        margin-bottom: 16px;
+        background: #111;
+        border: 1px solid #222;
+        border-radius: 12px;
+        padding: 12px;
+    }
+    
+    td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0 !important;
+        border-bottom: 1px solid #1a1a1a;
+        white-space: normal !important;
+        font-size: 14px;
+    }
+    
+    td:last-child {
+        border-bottom: none;
+    }
+    
+    /* Add labels for each cell */
+    td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #10b981;
+        margin-right: 12px;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+    
+    /* Date cell special styling */
+    td:first-child {
+        background: #0a0a0a;
+        margin: -12px -12px 12px -12px;
+        padding: 12px 16px !important;
+        border-radius: 12px 12px 0 0;
+        font-weight: 700;
+        font-size: 15px;
+        justify-content: center;
+    }
+    
+    td:first-child::before {
+        display: none;
+    }
+    
+    /* Remove rowspan effect on mobile */
+    td[rowspan] {
+        display: flex;
+    }
+    
+    /* Table wrapper */
+    .table-wrapper {
+        background: transparent;
+        border: none;
+        padding: 0;
+        margin: 0;
+        overflow-x: visible;
+    }
+    
+    /* Results header */
+    .results-header {
+        margin-bottom: 20px;
+    }
+}
